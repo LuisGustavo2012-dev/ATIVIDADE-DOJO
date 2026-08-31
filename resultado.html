@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Resultado</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>Resultado Final</h1>
+    <p id="nomeExibido"></p>
+    <p id="mediaExibida"></p>
+    <p class="resultado" id="statusFinal"></p>
+    <button onclick="window.location.href='index.html'">Voltar</button>
+  </div>
+
+  <script>
+    const nome = localStorage.getItem("nomeAluno");
+    const media = parseFloat(localStorage.getItem("mediaFinal"));
+
+    document.getElementById("nomeExibido").textContent = "Aluno: " + nome;
+    document.getElementById("mediaExibida").textContent = "Média: " + media.toFixed(2);
+
+    const statusEl = document.getElementById("statusFinal");
+    let status = "";
+    let cor = "";
+
+    if (media > 6) {
+      status = "APROVADO";
+      cor = "#2e7d32";
+    } else if (media >= 2 && media <= 5.9) {
+      status = "EXAME";
+      cor = "#f9a825";
+    } else {
+      status = "REPROVADO";
+      cor = "#c62828";
+    }
+
+    statusEl.textContent = status;
+    statusEl.style.color = cor;
+  </script>
+</body>
+</html>
